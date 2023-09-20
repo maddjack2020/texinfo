@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+PATH := /opt/cross/bin:$(PATH)
+SHELL := /bin/bash
+
+%:
+	dh $@ --with autoreconf
+
+CONFARGS = --disable-static
+override_dh_auto_configure:
+	dh_auto_configure -- $(CONFARGS) CC=x86_64-xgcc-linux-gnu-gcc CXX=x86_64-xgcc-linux-gnu-g++
+
